@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <img
+                        src="https://movie.techmaster.vn/assets/logo-C2IIl7EL.png"
+                        alt="logo"
+                />
+            </a>
+            <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavAltMarkup"
+                    aria-controls="navbarNavAltMarkup"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+            >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div
+                    class="collapse navbar-collapse justify-content-between"
+                    id="navbarNavAltMarkup"
+            >
+                <div class="navbar-nav">
+                    <a class="nav-link text-white" href="/">Trang chủ</a>
+                    <a class="nav-link text-white" href="/phim-bo">Phim bộ</a>
+                    <a class="nav-link text-white" href="/phim-chieu-rap">Phim chiếu rạp</a>
+                    <a class="nav-link text-white" href="/phim-le">Phim lẻ</a>
+                    <a class="nav-link text-white" href="#">Quốc gia</a>
+                    <a class="nav-link text-white" href="#">Thể loại</a>
+                    <a class="nav-link text-white" href="#">Mua phim</a>
+                </div>
+                <div>
+                    <a th:if="${session.currentUser == null}" class="nav-link text-white" href="/dang-nhap">Đăng nhập</a>
+                    <div class="dropdown" th:if="${session.currentUser != null}">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"
+                                th:text="${session.currentUser.displayName}">
+                            Dropdown button
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li th:if="${session.currentUser.role.toString().equals('ADMIN')}">
+                                <a class="dropdown-item" href="#">Trang quan tri</a>
+                            </li>
+                            <li><a class="dropdown-item" href="#">Ho so ca nhan</a></li>
+                            <li><a class="dropdown-item" href="/phim-yeu-thich">Phim yeu thich</a></li>
+                            <li><a class="dropdown-item" href="#">Dang xuat</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+</body>
+</html>
